@@ -4,6 +4,7 @@ from simple_blogger.generators.YandexGenerator import YandexImageGenerator
 from datetime import datetime
 from datetime import timedelta
 from simple_blogger.senders.TelegramSender import TelegramSender
+from simple_blogger.senders.VkSender import VkSender
 
 class Project(CommonBlogger):
     def _example_task_creator(self):
@@ -40,7 +41,10 @@ class Project(CommonBlogger):
             topic_word_limit=150,
             days_between_posts=timedelta(days=2),
             reviewer=TelegramSender(),
-            senders=[TelegramSender(channel_id=f"@class5nik")],
+            senders=[
+                TelegramSender(channel_id=f"@class5nik"),
+                VkSender(group_id='229821544')
+                    ],
             **kwargs
         )
         self.age = age
